@@ -1,0 +1,98 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AwesomeListView"
+    xmlns:windowsPhone="using:AwesomeListView.WindowsPhone">
+
+    <Style TargetType="windowsPhone:AwesomeListView" >
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="TabNavigation" Value="Once"/>
+        <Setter Property="IsSwipeEnabled" Value="True"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Top"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Disabled"/>
+        <Setter Property="ScrollViewer.VerticalScrollMode" Value="Enabled"/>
+        <Setter Property="ScrollViewer.ZoomMode" Value="Disabled"/>
+        <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False"/>
+        <Setter Property="ScrollViewer.BringIntoViewOnFocusChange" Value="True"/>
+        <Setter Property="ItemContainerTransitions">
+            <Setter.Value>
+                <TransitionCollection>
+                    <AddDeleteThemeTransition/>
+                    <ReorderThemeTransition/>
+                </TransitionCollection>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <ItemsStackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Margin" Value="0"/>
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="windowsPhone:AwesomeListView">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"
+                            x:Name="Container" HorizontalAlignment="Stretch">
+                        <Grid>
+                            <ContentPresenter Grid.RowSpan="2" x:Name="EmptyContentPresenter" Visibility="Collapsed"
+                                                      Opacity="0"
+                                                      IsHitTestVisible="False"
+                                                      HorizontalAlignment="Center"
+                                                      ContentTemplate="{TemplateBinding EmptyViewTemplate}"/>
+
+                            <ContentPresenter Grid.RowSpan="2" x:Name="LoadingContentPresenter"
+                                                      IsHitTestVisible="False"
+                                                      Visibility="Visible"
+                                                      HorizontalAlignment="Center"
+                                                      ContentTemplate="{TemplateBinding LoadingTemplate}"
+                                                      Opacity="1"/>
+
+
+                            <ScrollViewer x:Name="ScrollViewer" AutomationProperties.AccessibilityView="Raw" BringIntoViewOnFocusChange="{TemplateBinding ScrollViewer.BringIntoViewOnFocusChange}" HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}" IsHorizontalScrollChainingEnabled="{TemplateBinding ScrollViewer.IsHorizontalScrollChainingEnabled}" IsVerticalScrollChainingEnabled="{TemplateBinding ScrollViewer.IsVerticalScrollChainingEnabled}" IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}" IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}" TabNavigation="{TemplateBinding TabNavigation}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" 
+                                          VerticalScrollMode="Enabled" ZoomMode="{TemplateBinding ScrollViewer.ZoomMode}"
+                                      RenderTransformOrigin="0.5 0.5" Margin="0 0 0 -100" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
+                                <ScrollViewer.RenderTransform>
+                                    <CompositeTransform TranslateY="-100"/>
+                                </ScrollViewer.RenderTransform>
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!-- hack -->
+                                    <Rectangle Grid.Row="1" Visibility="Visible" Height="1" x:Name="PullRefreshScrollHeightFix"/>
+                                    <!-- If scrollviewer has small height then pull to refresh gesture is hard to invoke. -->
+
+                                    <Grid Height="{TemplateBinding RefreshHeaderHeight}" x:Name="PullToRefreshIndicator" Grid.Row="0">
+                                        <ContentPresenter Height="{TemplateBinding RefreshHeaderHeight}" ContentTemplate="{TemplateBinding PullToRefreshTemplate}"/>
+                                    </Grid>
+
+
+                                    <ItemsPresenter FooterTransitions="{TemplateBinding FooterTransitions}" FooterTemplate="{TemplateBinding FooterTemplate}" Footer="{TemplateBinding Footer}" HeaderTemplate="{TemplateBinding HeaderTemplate}" Header="{TemplateBinding Header}" HeaderTransitions="{TemplateBinding HeaderTransitions}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                    x:Name="ItemsPresenter"
+                                                    Grid.Row="1"/>
+                                </Grid>
+                            </ScrollViewer>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
