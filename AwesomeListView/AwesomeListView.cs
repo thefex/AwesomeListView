@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Specialized;
-using System.Linq;
 using System.Windows.Input;
 using Windows.Foundation;
 using Windows.UI.Core;
@@ -13,7 +10,7 @@ using AwesomeListView.WindowsPhone.Extensions;
 
 // The Templated Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234235
 
-namespace AwesomeListView.WindowsPhone
+namespace AwesomeListView
 {
     public sealed class AwesomeListView : ListView
     {

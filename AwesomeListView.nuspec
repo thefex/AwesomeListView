@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata minClientVersion="3.2">
     <id>AwesomeListView</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <authors>Przemysław Raciborski [thefex]</authors>
     <description>AwesomeListView is an extension of standard WinRT/UWP ListView for Windows Phone. Supports: Loading view, Empty view, Pull To Refresh.</description>
     <dependencies>
@@ -11,12 +11,12 @@
   </metadata>
   <files>
     <file src="AwesomeListView\bin\Release\*.dll" target="lib\wpa81" />
-    <file src="AwesomeListView\bin\Release\*.pri" target="lib\wpa81\AwesomeListView.WindowsPhone\" />
+    <file src="AwesomeListView\bin\Release\*.pri" target="lib\wpa81\AwesomeListView\" />
     <file src="AwesomeListView\bin\Release\*.pri" target="lib\wpa81\" />
-    <file src="AwesomeListView\bin\Release\*.xml" target="lib\wpa81\AwesomeListView.WindowsPhone\"/>
+    <file src="AwesomeListView\bin\Release\*.xml" target="lib\wpa81\AwesomeListView\"/>
     <file src="AwesomeListView\bin\Release\*.xml" target="lib\wpa81\" />
-    <file src="AwesomeListView\bin\Release\*.xr.xml" target="lib\wpa81\AwesomeListView.WindowsPhone\" />
-    <file src="AwesomeListView\bin\Release\Themes\*" target="lib\wpa81\AwesomeListView.WindowsPhone\Themes\" />
+    <file src="AwesomeListView\bin\Release\*.xr.xml" target="lib\wpa81\AwesomeListView\" />
+    <file src="AwesomeListView\bin\Release\Themes\*" target="lib\wpa81\AwesomeListView\Themes\" />
     <file src="AwesomeListView\bin\Release\Themes\*" target="lib\wpa81\Themes\" />
   </files>
 </package>
